@@ -86,7 +86,7 @@ message SimpleResponse {
     Data data = 3;
 }
 
-service Warehouse {
+service Vendor {
     rpc Create(CreateRequest) returns (DataResponse);
     rpc Get(GetRequest) returns (DataResponse);
     rpc Update(UpdateRequest) returns (DataResponse);
