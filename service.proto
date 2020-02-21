@@ -46,7 +46,7 @@ message BalanceRequest {
     RequestHeader header = 1;
     int32 id = 2;
     message Data {
-        int64 amount = 1;
+        double amount = 1;
     }
     Data data = 3;
 }
@@ -68,7 +68,7 @@ message DataResponse {
         string addressState = 11;
         string addressCountry = 12;
         string displayBalanceAmount = 13;
-        int64 balanceAmount = 14;
+        double balanceAmount = 14;
         string createdDate = 15;
         string createdBy = 16;
         string lastModifiedDate = 17;
@@ -84,7 +84,7 @@ message SimpleResponse {
     string message = 2;
     message Data {
         string displayBalanceAmount = 1;
-        int64 balanceAmount = 2;
+        double balanceAmount = 2;
     }
     Data data = 3;
 }
