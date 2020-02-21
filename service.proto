@@ -59,19 +59,22 @@ message DataResponse {
         string name = 2;
         string code = 3;
         string description = 4;
-        string addressStreet = 5;
-        string addressCity = 6;
-        string addressPostCode = 7;
-        string addressState = 8;
-        string addressCountry = 9;
-        string displayBalanceAmount = 10;
-        int64 balanceAmount = 11;
-        string createdDate = 12;
-        string createdBy = 13;
-        string lastModifiedDate = 14;
-        string lastModifiedBy = 15;
-        string recordState = 16;
-        int64 referencedBy = 17;//number of records that referenced this record
+        string contactEmail = 5;
+        string contactMobile = 6;
+        string contactPhone = 7;
+        string addressStreet = 8;
+        string addressCity = 9;
+        string addressPostCode = 10;
+        string addressState = 11;
+        string addressCountry = 12;
+        string displayBalanceAmount = 13;
+        int64 balanceAmount = 14;
+        string createdDate = 15;
+        string createdBy = 16;
+        string lastModifiedDate = 17;
+        string lastModifiedBy = 18;
+        string recordState = 19;
+        int64 referencedBy = 20;//number of records that referenced this record
     }
     Data data = 3;
 }
