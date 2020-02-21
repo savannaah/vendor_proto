@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+package vendorproto;
+
+message RequestHeader {
+    string token = 1;
+}
+
+message RequestField {
+    string code = 1;
+    string name = 2;
+    string description = 3;
+    string contactEmail = 4;
+    string contactMobile = 5;
+    string contactPhone = 6;
+    string addressStreet = 7;
+    string addressCity = 8;
+    string addressPostCode = 9;
+    string addressState= 10;
+    string addressCountry = 11;
+}
+
+message GetRequest {
+    RequestHeader header = 1;
+    int32 id = 2;
+}
+
+message CreateRequest {
+    RequestHeader header = 1;
+    RequestField field = 2;
+}
+
+message UpdateRequest {
+    RequestHeader header = 1;
+    int32 id = 2;
+    RequestField field = 3;
+}
+
+message ActionRequest {
+    RequestHeader header = 1;
+    int32 id = 2;
+    string name = 3;
+}
+
+message BalanceRequest {
+    RequestHeader header = 1;
+    int32 id = 2;
+    message Data {
+        int64 amount = 1;
+    }
+    Data data = 3;
+}
+
+message DataResponse {
+    int32 statusCode = 1;
+    string message = 2;
+    message Data {
+        string id = 1;
+        string name = 2;
+        string code = 3;
+        string description = 4;
+        string addressStreet = 5;
+        string addressCity = 6;
+        string addressPostCode = 7;
+        string addressState = 8;
+        string addressCountry = 9;
+        string displayBalanceAmount = 10;
+        int64 balanceAmount = 11;
+        string createdDate = 12;
+        string createdBy = 13;
+        string lastModifiedDate = 14;
+        string lastModifiedBy = 15;
+        string recordState = 16;
+        int64 referencedBy = 17;//number of records that referenced this record
+    }
+    Data data = 3;
+}
+
+message SimpleResponse {
+    int32 statusCode = 1;
+    string message = 2;
+    message Data {
+        string displayBalanceAmount = 1;
+        int64 balanceAmount = 2;
+    }
+    Data data = 3;
+}
+
+service Warehouse {
+    rpc Create(CreateRequest) returns (DataResponse);
+    rpc Get(GetRequest) returns (DataResponse);
+    rpc Update(UpdateRequest) returns (DataResponse);
+    rpc Action(ActionRequest) returns (DataResponse);
+    rpc AdjustBalance(BalanceRequest) returns (SimpleResponse);
+}
